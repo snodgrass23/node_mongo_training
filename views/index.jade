@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h2 New User
+  form(method="post", action="/user")
+    ul
+      li
+        input(name="name", placeholder="user name")
+      li
+        input(name="email", placeholder="user email")
+      li
+        select(name="team")
+          option select team
+          each team in teams
+            option(value=team._id)= team.name
+      li
+        input(type="submit") Add User
+
+
+  h2 New Team
+  form(method="post", action="/team")
+    ul
+      li
+        input(name="name", placeholder="team name")
+      li
+        input(type="submit") Add Team
+
+  h2 All users
+  ul
+    each user in users
+      li 
+        a(href='/user/'+user._id)=user.name + " "
+        | can be reached at #{user.email}
+
+  h2 All teams
+  ul
+    each team in teams
+      li= team.name
+

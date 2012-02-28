@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  a(href="/") back
+  if user
+    ul
+      li name: #{user.name}
+      li email: #{user.email}
+      li created: #{user.created_at}
+      if user.team[0]
+        if user.team[0].name
+          li team: #{user.team[0].name}
+        else
+          li team: #{user.team[0]}
